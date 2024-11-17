@@ -6,6 +6,7 @@ inputs:
     default: '8.0.x'
   source-url:
     description: 'Optional package source for which to set up authentication. Will consult any existing NuGet.config in the root of the repo and provide a temporary NuGet.config using the NUGET_AUTH_TOKEN environment variable as a ClearTextPassword'
+    default: https://api.nuget.org/v3/index.json
   owner:
     description: 'Optional OWNER for using packages from GitHub Package Registry organizations/users other than the current repository''s owner. Only used if a GPR URL is also provided in source-url'
   config-file:

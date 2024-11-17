@@ -56,7 +56,7 @@ jobs:
         NUGET_AUTH_TOKEN: ${{ secrets.TOKEN }}
 
     - name: Build the package(s)
-      run: dotnet build --output nupkgs
+      run: dotnet build -c Release
 
     - name: Create the package(s)
       run: dotnet pack -c Release --output nupkgs /p:PackageVersion=${{ needs.get-version.outputs.VERSION }} /p:AssemblyVersion=${{ needs.get-version.outputs.VERSION }} /p:Version=${{ needs.get-version.outputs.VERSION }}

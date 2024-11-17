@@ -13,7 +13,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        dotnet: [ '9.0.x', '8.0.x', '7.0.x', '6.0.x' ]
+#        dotnet: [ '9.0.x', '8.0.x', '7.0.x', '6.0.x' ]
+        dotnet: [ '8.0.x', '7.0.x', '6.0.x' ]
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET

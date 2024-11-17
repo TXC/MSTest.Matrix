@@ -62,7 +62,7 @@ jobs:
       run: dotnet pack -c Release /p:PackageVersion=${{ needs.get-version.outputs.VERSION }} /p:AssemblyVersion=${{ needs.get-version.outputs.VERSION }} /p:Version=${{ needs.get-version.outputs.VERSION }}
 
     - name: Publish nuget package
-      run: dotnet nuget push */bin/Release/*.nupkg --skip-duplicate
+      run: dotnet nuget push */bin/Release/*.nupkg -k ${{ secrets.TOKEN }} --skip-duplicate
 
     - name: Push nuget generated package symbols
-      run: dotnet nuget push */bin/Release/*.snupkg --skip-duplicate
+      run: dotnet nuget push */bin/Release/*.snupkg -k ${{ secrets.TOKEN }} --skip-duplicate

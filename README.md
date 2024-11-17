@@ -64,6 +64,22 @@ public class MyUnitTest
 }
 ```
 
+```c#
+public class MyUnitTest
+{
+    ...
+    [TestMethod]
+    [Matrix(DisplayName = "My Custom DisplayName")]
+    [MatrixParameter("value1.1", "value1.2", "value1.3")]
+    [MatrixParameter("value2.1", "value2.2", "value2.3")]
+    public void TestDisplayName(string a, string b)
+    {
+      ...
+    }
+    ...
+}
+```
+
 
 ### How to exclude a combination
 

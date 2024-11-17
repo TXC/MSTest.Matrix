@@ -11,8 +11,6 @@ namespace Microsoft.VisualStudio.TestTools.UnitTesting
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class MatrixAttribute : Attribute, ITestDataSource
     {
-        protected internal static TestIdGenerationStrategy TestIdGenerationStrategy { get; internal set; }
-
         /// <summary>
         /// Gets or sets display name in test results for customization.
         /// </summary>
@@ -27,7 +25,6 @@ namespace Microsoft.VisualStudio.TestTools.UnitTesting
 
             if (attributes.Count() < 2)
             {
-                //MeaningLessToHaveOnlyOneSetOfParameters();
                 throw new Exception("You need atleast two MatrixParameterAttribute, otherwise use DataRowAttribute");
                 //#warning "You need atleast two MatrixParameterAttribute, otherwise use DataRowAttribute"
             }
@@ -86,21 +83,16 @@ namespace Microsoft.VisualStudio.TestTools.UnitTesting
             }
             return arg;
         }
-        /*
-                void MeaningLessToHaveOnlyOneSetOfParameters()
-                {
-                    throw new Exception("You need atleast two MatrixParameterAttribute, otherwise use DataRowAttribute");
-        //#warning "You need atleast two MatrixParameterAttribute, otherwise use DataRowAttribute"
-                }
-        */
+
         /// <inheritdoc />
         public string GetDisplayName(MethodInfo methodInfo, object[] data)
         {
+            string parameters = string.Join(", ", data);
             if (string.IsNullOrWhiteSpace(DisplayName))
             {
-                return $"{methodInfo.Name} ({string.Join(",", data)})";
+                return $"{methodInfo.Name} ({parameters})";
             }
-            return $"{DisplayName} ({string.Join(",", data)})";
+            return $"{DisplayName} ({parameters})";
         }
     }
 }

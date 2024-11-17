@@ -1,9 +1,7 @@
-using FluentAssertions;
-using System;
-using System.Linq;
-
 namespace Matrix.Test
 {
+    using System;
+
     [TestClass]
     public class UnitTest1
     {
@@ -42,6 +40,15 @@ namespace Matrix.Test
             int result = a + b;
             Assert.IsTrue(result > 0);
             Assert.IsFalse(result % 2 == 0);
+        }
+
+        [TestMethod]
+        [Matrix(DisplayName = "My Custom DisplayName")]
+        [MatrixParameter("value1.1", "value1.2", "value1.3")]
+        [MatrixParameter("value2.1", "value2.2", "value2.3")]
+        public void TestDisplayName(string a, string b)
+        {
+            Assert.IsFalse(string.IsNullOrWhiteSpace(a) && string.IsNullOrWhiteSpace(b));
         }
     }
 }

@@ -22,6 +22,8 @@ jobs:
       id: stepid
       with:
         dotnet-version: ${{ matrix.dotnet }}
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.TOKEN }}
     - name: Create temporary global.json
       run: |
         echo '{"sdk":{"version": "${{ steps.stepid.outputs.dotnet-version }}"}}' > ./global
